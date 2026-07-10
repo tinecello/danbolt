@@ -1,6 +1,9 @@
 import { useParams, Link } from 'react-router-dom'
 import { ArrowLeft, Calendar, Clock, User } from 'lucide-react'
 import { bloggposts, formatDato } from '../data/bloggposts'
+import EtterklangAnimasjon from '../components/blogg/EtterklangAnimasjon'
+import AbsorpsjonDiffusjonAnimasjon from '../components/blogg/AbsorpsjonDiffusjonAnimasjon'
+import TaletydelighetAnimasjon from '../components/blogg/TaletydelighetAnimasjon'
 
 export default function BloggPost() {
   const { slug } = useParams<{ slug: string }>()
