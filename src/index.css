@@ -24,13 +24,6 @@
     --input: 240 6% 15%;
     --ring: 28 55% 52%;
     --radius: 0.625rem;
-
-    --copper: #C87941;
-    --copper-light: #D4A574;
-    --cream: #F5F0EB;
-    --dark: #0A0A0F;
-    --dark-card: #111118;
-    --dark-brown: #1C1410;
   }
 
   * {
@@ -70,13 +63,81 @@
     background-clip: text;
   }
 
-  .bg-gradient-dark {
-    background: linear-gradient(180deg, #0A0A0F 0%, #111118 100%);
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .border-copper-subtle {
-    border-color: rgba(200, 121, 65, 0.15);
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
+}
+
+/* Blogg innholds-stiler */
+.prose-blogg {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: rgba(245, 240, 235, 0.75);
+}
+
+.prose-blogg h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #F5F0EB;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.prose-blogg p {
+  margin-bottom: 1.25rem;
+}
+
+.prose-blogg strong {
+  color: #F5F0EB;
+  font-weight: 600;
+}
+
+.prose-blogg ul {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  list-style: none;
+}
+
+.prose-blogg ul li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+.prose-blogg ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #C87941;
+}
+
+.prose-blogg a {
+  color: #D4A574;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.prose-blogg a:hover {
+  color: #C87941;
 }
 
 /* Custom scrollbar */
