@@ -26,11 +26,13 @@ export default function BloggPost() {
 
   return (
     <article className="min-h-screen bg-dark pt-20">
+      {/* Hero bilde */}
       <div className="relative aspect-[21/9] max-h-[500px]">
         <img src={post.bilde} alt={post.tittel} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent" />
       </div>
 
+      {/* Innhold */}
       <div className="max-w-3xl mx-auto px-6 lg:px-8 -mt-32 relative z-10">
         <Link to="/blogg" className="inline-flex items-center gap-2 text-cream/50 text-sm hover:text-copper-light transition-colors mb-6">
           <ArrowLeft size={16} /> Tilbake til bloggen
@@ -43,17 +45,28 @@ export default function BloggPost() {
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-cream mb-6 leading-tight">{post.tittel}</h1>
 
         <div className="flex items-center gap-5 text-cream/40 text-sm mb-10 pb-10 border-b border-cream/5">
-          <span className="flex items-center gap-1.5"><User size={14} /> Thorbjorn Danbolt</span>
+          <span className="flex items-center gap-1.5"><User size={14} /> Thorbjørn Danbolt</span>
           <span className="flex items-center gap-1.5"><Calendar size={14} /> {formatDato(post.dato)}</span>
           <span className="flex items-center gap-1.5"><Clock size={14} /> {post.lestetid} min lesning</span>
         </div>
 
+        {/* Ingress */}
         <p className="text-cream/70 text-lg leading-relaxed mb-10 font-medium italic border-l-2 border-copper/30 pl-6">
           {post.ingress}
         </p>
 
-        <div className="prose-blogg mb-16" dangerouslySetInnerHTML={{ __html: post.innhold }} />
+        {/* Animert illustrasjon */}
+        {post.slug === 'etterklangstid-kirke' && <EtterklangAnimasjon />}
+        {post.slug === 'absorpsjon-vs-diffusjon' && <AbsorpsjonDiffusjonAnimasjon />}
+        {post.slug === 'taletydelighet-sti' && <TaletydelighetAnimasjon />}
 
+        {/* Hovedinnhold */}
+        <div
+          className="prose-blogg mb-16"
+          dangerouslySetInnerHTML={{ __html: post.innhold }}
+        />
+
+        {/* Relaterte poster */}
         {relaterte.length > 0 && (
           <div className="border-t border-cream/5 pt-12 pb-20">
             <h3 className="font-serif text-2xl text-cream mb-8">Relaterte innlegg</h3>
