@@ -4,6 +4,7 @@ import { bloggposts, formatDato } from '../data/bloggposts'
 import EtterklangAnimasjon from '../components/blogg/EtterklangAnimasjon'
 import AbsorpsjonDiffusjonAnimasjon from '../components/blogg/AbsorpsjonDiffusjonAnimasjon'
 import TaletydelighetAnimasjon from '../components/blogg/TaletydelighetAnimasjon'
+import NS8175Animasjon from '../components/blogg/NS8175Animasjon'
 
 export default function BloggPost() {
   const { slug } = useParams<{ slug: string }>()
@@ -59,6 +60,7 @@ export default function BloggPost() {
         {post.slug === 'etterklangstid-kirke' && <EtterklangAnimasjon />}
         {post.slug === 'absorpsjon-vs-diffusjon' && <AbsorpsjonDiffusjonAnimasjon />}
         {post.slug === 'taletydelighet-sti' && <TaletydelighetAnimasjon />}
+                {post.slug === 'ns8175-etterklangskrav' && <NS8175Animasjon />}
 
         {/* Hovedinnhold */}
         <div
