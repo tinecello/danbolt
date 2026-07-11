@@ -45,8 +45,8 @@ export default function Services() {
                 </div>
                 <h3 className="font-serif text-xl text-cream mb-3 group-hover:text-copper-light transition-colors">{service.title}</h3>
                 <p className="text-cream/50 text-sm leading-relaxed mb-4">{service.description}</p>
-                <div className={`overflow-hidden transition-all duration-400 ${isActive ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="pt-4 border-t border-copper/10 space-y-2">
+                <div className={`grid transition-all duration-400 ${isActive ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+                  <div className="overflow-hidden min-h-0 pt-4 border-t border-copper/10 space-y-2">
                     {service.details.map(d => <div key={d} className="flex items-center gap-2 text-sm"><div className="w-1.5 h-1.5 rounded-full bg-copper/60 flex-shrink-0" /><span className="text-cream/60">{d}</span></div>)}
                   </div>
                 </div>
