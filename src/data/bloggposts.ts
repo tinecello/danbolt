@@ -138,7 +138,7 @@ export const bloggposts: Bloggpost[] = [
   },
 ]
 
-export const kategorier = ['Alle', 'Akustikk', 'Kirke', 'Kulturhus', 'Teknikk', 'Tips']
+export const kategorier = ['Alle', 'Akustikk', 'Skole', 'Kirke', 'Kulturhus', 'Teknikk', 'Tips']
 
 // Hjelpefunksjon: formater dato
 export function formatDato(dato: string): string {
