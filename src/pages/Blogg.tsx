@@ -33,6 +33,12 @@ export default function Blogg() {
         <meta property="og:description" content="Faglige artikler om akustikk, taletydelighet, lydanlegg og lydkrav i kirker, skoler, kulturhus og møterom." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://danbolt.no/blogg" />
+        <meta property="og:image" content="https://danbolt.no/thorbjorn-danbolt.jpg" />
+        <meta property="og:locale" content="nb_NO" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blogg | Thorbjørn Danbolt – Lyd &amp; Akustikk" />
+        <meta name="twitter:description" content="Faglige artikler om akustikk, taletydelighet, lydanlegg og lydkrav i kirker, skoler, kulturhus og møterom." />
+        <meta name="twitter:image" content="https://danbolt.no/thorbjorn-danbolt.jpg" />
       </Helmet>
 
       {/* Header */}

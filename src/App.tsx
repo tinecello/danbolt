@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
-import { HelmetProvider } from 'react-helmet-async'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import Navigation from './sections/Navigation'
 import Hero from './sections/Hero'
 import Philosophy from './sections/Philosophy'
@@ -41,6 +41,21 @@ function Forside() {
 
   return (
     <div className="relative min-h-screen bg-dark text-cream overflow-x-hidden">
+      <Helmet>
+        <title>Thorbjørn Danbolt | Uavhengig rådgiver lyd &amp; akustikk | Målinger og kvalitetssikring</title>
+        <meta name="description" content="Uavhengig teknisk rådgiver innen lyd og akustikk. 30+ års erfaring med akustiske målinger, prosjektering og kvalitetssikring for skoler, kirker, møterom, kulturhus og offentlige bygg." />
+        <link rel="canonical" href="https://danbolt.no" />
+        <meta property="og:title" content="Thorbjørn Danbolt | Uavhengig Rådgiver Lyd &amp; Akustikk" />
+        <meta property="og:description" content="Uavhengig teknisk rådgiver innen lyd og akustikk. 30+ års erfaring med akustiske målinger, prosjektering og kvalitetssikring for skoler, kirker, møterom, kulturhus og offentlige bygg." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://danbolt.no" />
+        <meta property="og:image" content="https://danbolt.no/thorbjorn-danbolt.jpg" />
+        <meta property="og:locale" content="nb_NO" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Thorbjørn Danbolt | Lyd &amp; Akustikk" />
+        <meta name="twitter:description" content="Uavhengig teknisk rådgiver innen lyd og akustikk. 30+ års erfaring med akustiske målinger, prosjektering og kvalitetssikring for skoler, kirker, møterom, kulturhus og offentlige bygg." />
+        <meta name="twitter:image" content="https://danbolt.no/thorbjorn-danbolt.jpg" />
+      </Helmet>
       <Navigation scrolled={scrolled} />
       <main>
         <Hero />
