@@ -2,6 +2,7 @@ import { useEffect, useRef, useCallback } from 'react'
 import { Phone } from 'lucide-react'
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const mouseRef = useRef({ x: 0, y: 0, active: false })
   const animationRef = useRef<number>(0)
@@ -30,14 +31,25 @@ export default function Hero() {
 
     let width = 0
     let height = 0
+    let sectionVisible = true
+    let pageVisible = !document.hidden
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      width = canvas.offsetWidth
-      height = canvas.offsetHeight
-      canvas.width = width * dpr
-      canvas.height = height * dpr
-      ctx.scale(dpr, dpr)
+      const nextWidth = canvas.offsetWidth
+      const nextHeight = canvas.offsetHeight
+
+      // Android changes window.innerHeight while the browser chrome opens and
+      // closes. Only rebuild the canvas when its actual CSS size changed.
+      if (nextWidth === width && nextHeight === height) return
+
+      width = nextWidth
+      height = nextHeight
+      const isMobile = window.matchMedia('(max-width: 767px), (pointer: coarse)').matches
+      const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2)
+      canvas.width = Math.round(width * dpr)
+      canvas.height = Math.round(height * dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
 
     resize()
@@ -99,7 +111,15 @@ export default function Hero() {
       ctx.fill()
     }
 
+    const scheduleAnimation = () => {
+      if (!reduceMotion && sectionVisible && pageVisible && !animationRef.current) {
+        animationRef.current = requestAnimationFrame(animate)
+      }
+    }
+
     const animate = () => {
+      animationRef.current = 0
+      if (!sectionVisible || !pageVisible) return
       timeRef.current += 0.016
       const time = timeRef.current
       ctx.clearRect(0, 0, width, height)
@@ -129,12 +149,28 @@ export default function Hero() {
         if (p.life >= p.maxLife) particles.splice(i, 1)
       }
       if (particles.length > 150) particles.splice(0, particles.length - 150)
-      animationRef.current = requestAnimationFrame(animate)
+      scheduleAnimation()
     }
 
+    const observer = new IntersectionObserver(([entry]) => {
+      sectionVisible = entry.isIntersecting
+      if (sectionVisible) scheduleAnimation()
+    })
+    if (sectionRef.current) observer.observe(sectionRef.current)
+
+    const handleVisibilityChange = () => {
+      pageVisible = !document.hidden
+      if (pageVisible) scheduleAnimation()
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+
+    // Always paint the initial frame. Reduced-motion users keep this static.
     animate()
     return () => {
       cancelAnimationFrame(animationRef.current)
+      animationRef.current = 0
+      observer.disconnect()
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
       window.removeEventListener('resize', resize)
       canvas.removeEventListener('mousemove', handleMouseMove)
       canvas.removeEventListener('mouseleave', handleMouseLeave)
@@ -142,7 +178,7 @@ export default function Hero() {
   }, [handleMouseMove, handleMouseLeave])
 
   return (
-    <section id="hjem" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+    <section ref={sectionRef} id="hjem" className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full cursor-crosshair" style={{ zIndex: 1 }} />
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(10,10,15,0.6) 70%, rgba(10,10,15,0.95) 100%)', zIndex: 2 }} />

@@ -3,8 +3,8 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Philosophy() {
   const sectionRef = useRef<HTMLElement>(null)
+  const imageRef = useRef<HTMLImageElement>(null)
   const [visible, setVisible] = useState(false)
-  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -18,15 +18,29 @@ export default function Philosophy() {
   }, [])
 
   useEffect(() => {
-    const viewportHeight = window.innerHeight
-    const handleScroll = () => {
-      if (!sectionRef.current) return
+    let frame = 0
+
+    const updateParallax = () => {
+      frame = 0
+      if (!sectionRef.current || !imageRef.current) return
       const rect = sectionRef.current.getBoundingClientRect()
-      const progress = -rect.top / viewportHeight
-      setScrollY(progress * 40)
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return
+      const progress = -rect.top / window.innerHeight
+      imageRef.current.style.transform = `translate3d(0, ${progress * 40}px, 0)`
     }
+
+    const handleScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateParallax)
+    }
+
+    updateParallax()
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll, { passive: true })
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
   }, [])
 
   return (
@@ -60,12 +74,13 @@ export default function Philosophy() {
             style={{ height: 'clamp(320px, 45svh, 520px)' }}
           >
             <img
+              ref={imageRef}
               src="/natur-rom.jpg"
               alt="Norsk natur - Rommet er grunnlaget for all lyd"
               className="absolute inset-0 w-full h-[120%] object-cover"
               style={{
-                transform: `translateY(${scrollY}px)`,
-                transition: 'transform 0.1s linear',
+                transform: 'translate3d(0, 0, 0)',
+                willChange: 'transform',
               }}
             />
 
