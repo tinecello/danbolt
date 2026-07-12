@@ -42,18 +42,18 @@ function Forside() {
   return (
     <div className="relative min-h-screen bg-dark text-cream overflow-x-hidden">
       <Helmet>
-        <title>Thorbjørn Danbolt | Uavhengig rådgiver lyd &amp; akustikk | Målinger og kvalitetssikring</title>
-        <meta name="description" content="Uavhengig teknisk rådgiver innen lyd og akustikk. 30+ års erfaring med akustiske målinger, prosjektering og kvalitetssikring for skoler, kirker, møterom, kulturhus og offentlige bygg." />
+        <title>Uavhengig lyd- og akustikkrådgiver | Thorbjørn Danbolt</title>
+        <meta name="description" content="Uavhengig rådgivning, akustikkmålinger og systemdesign for kirker, skoler, kulturhus og møterom. Mer enn 30 års erfaring over hele Norge." />
         <link rel="canonical" href="https://danbolt.no" />
-        <meta property="og:title" content="Thorbjørn Danbolt | Uavhengig Rådgiver Lyd &amp; Akustikk" />
-        <meta property="og:description" content="Uavhengig teknisk rådgiver innen lyd og akustikk. 30+ års erfaring med akustiske målinger, prosjektering og kvalitetssikring for skoler, kirker, møterom, kulturhus og offentlige bygg." />
+        <meta property="og:title" content="Uavhengig lyd- og akustikkrådgiver | Thorbjørn Danbolt" />
+        <meta property="og:description" content="Uavhengig rådgivning, akustikkmålinger og systemdesign for kirker, skoler, kulturhus og møterom. Mer enn 30 års erfaring over hele Norge." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://danbolt.no" />
         <meta property="og:image" content="https://danbolt.no/thorbjorn-danbolt.jpg" />
         <meta property="og:locale" content="nb_NO" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Thorbjørn Danbolt | Lyd &amp; Akustikk" />
-        <meta name="twitter:description" content="Uavhengig teknisk rådgiver innen lyd og akustikk. 30+ års erfaring med akustiske målinger, prosjektering og kvalitetssikring for skoler, kirker, møterom, kulturhus og offentlige bygg." />
+        <meta name="twitter:title" content="Uavhengig lyd- og akustikkrådgiver | Thorbjørn Danbolt" />
+        <meta name="twitter:description" content="Uavhengig rådgivning, akustikkmålinger og systemdesign for kirker, skoler, kulturhus og møterom. Mer enn 30 års erfaring over hele Norge." />
         <meta name="twitter:image" content="https://danbolt.no/thorbjorn-danbolt.jpg" />
       </Helmet>
       <Navigation scrolled={scrolled} />
@@ -93,18 +93,26 @@ function BloggPostLayout() {
   )
 }
 
+export function SiteRoutes() {
+  return (
+    <>
+      <LegacyHashRedirect />
+      <Routes>
+        <Route path="/" element={<Forside />} />
+        <Route path="/blogg" element={<BloggLayout />} />
+        <Route path="/blogg/:slug" element={<BloggPostLayout />} />
+        {/* Ukjente adresser sendes til forsiden i stedet for å gi blank side */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
+  )
+}
+
 function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <LegacyHashRedirect />
-        <Routes>
-          <Route path="/" element={<Forside />} />
-          <Route path="/blogg" element={<BloggLayout />} />
-          <Route path="/blogg/:slug" element={<BloggPostLayout />} />
-          {/* Ukjente adresser sendes til forsiden i stedet for å gi blank side */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <SiteRoutes />
       </BrowserRouter>
     </HelmetProvider>
   )

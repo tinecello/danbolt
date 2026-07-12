@@ -77,6 +77,10 @@ export default function Philosophy() {
               ref={imageRef}
               src="/natur-rom.jpg"
               alt="Norsk natur - Rommet er grunnlaget for all lyd"
+              width="1920"
+              height="1080"
+              loading="lazy"
+              decoding="async"
               className="absolute inset-0 w-full h-[120%] object-cover"
               style={{
                 transform: 'translate3d(0, 0, 0)',

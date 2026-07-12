@@ -32,7 +32,7 @@ export default function BloggPost() {
   return (
     <article className="min-h-screen bg-dark pt-20">
       <Helmet>
-        <title>{`${post.tittel} | Thorbjørn Danbolt`}</title>
+        <title>{post.seoTittel}</title>
         <meta name="description" content={post.ingress} />
         <link rel="canonical" href={postUrl} />
         <meta property="og:title" content={post.tittel} />
@@ -71,7 +71,7 @@ export default function BloggPost() {
 
       {/* Hero bilde */}
       <div className="relative aspect-[21/9] max-h-[500px]">
-        <img src={post.bilde} alt={post.tittel} className="w-full h-full object-cover" />
+        <img src={post.bilde} alt={post.tittel} width="1344" height="768" fetchPriority="high" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/50 to-transparent" />
       </div>
 

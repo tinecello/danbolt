@@ -11,6 +11,7 @@ export interface Bloggpost {
   id: string
   slug: string
   tittel: string
+  seoTittel: string
   ingress: string
   innhold: string
   kategori: string
@@ -25,6 +26,7 @@ export const bloggposts: Bloggpost[] = [
     id: '1',
     slug: 'etterklangstid-kirke',
     tittel: 'Derfor må du forstå rommet før du kjøper lydanlegg',
+    seoTittel: 'Akustikk før nytt lydanlegg | Thorbjørn Danbolt',
     ingress: 'Et lydanlegg løser sjelden et rom-problem. Lær hvorfor akustikken må kartlegges før du investerer — og hvordan du unngår å betale for feil løsning.',
     innhold: `
 <p>De fleste ringer meg for å høre hvilket lydanlegg de bør kjøpe. Nesten alltid er det feil første spørsmål.</p>
@@ -56,6 +58,7 @@ export const bloggposts: Bloggpost[] = [
     id: '2',
     slug: 'absorpsjon-vs-diffusjon',
     tittel: 'Hva er egentlig god akustikk? Etterklang, taletydelighet og romklang forklart enkelt',
+    seoTittel: 'Etterklang og taletydelighet forklart | Danbolt',
     ingress: 'Hva betyr etterklang, taletydelighet og romklang — og hvorfor merker du det som «dårlig lyd»? En enkel forklaring uten fagsjargong.',
     innhold: `
 <p>«Det er dårlig akustikk her.» Alle vet hva det føles som. Færre vet hva det faktisk betyr — og det er verdt å forstå, for det avgjør hvilken løsning som virker.</p>
@@ -84,6 +87,7 @@ export const bloggposts: Bloggpost[] = [
     id: '3',
     slug: 'taletydelighet-sti',
     tittel: 'Uavhengig rådgiver eller leverandør? Hvorfor det avgjør sluttresultatet',
+    seoTittel: 'Uavhengig lydrådgiver eller leverandør? | Danbolt',
     ingress: 'Rådet du får når du kjøper lydanlegg avhenger av hvem som gir det. Slik skiller uavhengig rådgivning seg fra en leverandørs anbefaling — og hvorfor det betyr noe for lommeboka.',
     innhold: `
 <p>Når du spør en som selger lydanlegg om hva du trenger, får du et ærlig svar — men det er formet av hva vedkommende har på lager. Det er ikke uredelighet. Det er innebygd i rollen.</p>
@@ -113,6 +117,7 @@ export const bloggposts: Bloggpost[] = [
     id: '4',
     slug: 'ns8175-etterklangskrav',
     tittel: 'NS 8175 og etterklangskravene: hva et skolebygg faktisk må oppfylle',
+    seoTittel: 'NS 8175: krav til etterklang i skolebygg | Danbolt',
     ingress: 'Hva krever NS 8175 av etterklang i klasserom og gymsal – og hva betyr klasse C i praksis? En klar forklaring av lydkravene i skolebygg, og hvorfor de må måles.',
     innhold: `
 <p>«Vi må jo følge kravene.» Men hvilke krav – og hva betyr egentlig et tall som 0,6 sekund for et rom fullt av elever?</p>

@@ -55,7 +55,7 @@ export default function Blogg() {
         <div className={`max-w-5xl mx-auto px-6 lg:px-8 mb-16 transition-all duration-1000 delay-200 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <Link to={`/blogg/${featured.slug}`} className="group block relative rounded-2xl overflow-hidden border border-copper/10 hover:border-copper/30 transition-all duration-500">
             <div className="relative aspect-[21/9]">
-              <img src={featured.bilde} alt={featured.tittel} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={featured.bilde} alt={featured.tittel} width="1344" height="768" fetchPriority="high" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent" />
               <div className="absolute inset-0 flex flex-col justify-end p-8 lg:p-12">
                 <span className="inline-block self-start px-3 py-1 bg-copper text-dark text-xs font-semibold uppercase tracking-wider rounded mb-4">Featured</span>
@@ -91,7 +91,7 @@ export default function Blogg() {
               className={`group relative bg-dark-card rounded-xl border border-copper/10 overflow-hidden transition-all duration-500 hover:border-copper/30 hover:shadow-glow hover:-translate-y-1 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: visible ? `${400 + i * 100}ms` : '0ms' }}>
               <div className="aspect-video overflow-hidden">
-                <img src={post.bilde} alt={post.tittel} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={post.bilde} alt={post.tittel} width="1344" height="768" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">

@@ -18,7 +18,7 @@ export default function About() {
           <div className={`relative transition-all duration-1000 ${visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
             <div className="relative">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-dark-card to-dark-lighter border border-copper/10 relative">
-                <img src="/thorbjorn-danbolt.jpg" alt="Thorbjørn Danbolt - Fagkonsulent i lyd og akustikk" className="w-full h-full object-cover object-top" loading="lazy" />
+                <img src="/thorbjorn-danbolt.jpg" alt="Thorbjørn Danbolt - Fagkonsulent i lyd og akustikk" width="1200" height="1600" className="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark/40 via-transparent to-transparent pointer-events-none" />
                 <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-copper/30 rounded-tl-lg" />
                 <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-copper/30 rounded-br-lg" />

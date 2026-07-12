@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 import App from './App'
 import './index.css'
 
@@ -7,8 +7,10 @@ import './index.css'
 // men fjern dem før Helmet setter riktig metadata for den aktive siden.
 document.querySelectorAll('[data-static-seo]').forEach((element) => element.remove())
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const app = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 )
+
+createRoot(document.getElementById('root')!).render(app)

@@ -6,6 +6,10 @@
   NODE_VERSION = "20"
   NPM_FLAGS = "--legacy-peer-deps"
 
+# Staging skal kunne testes offentlig, men ikke dukke opp i søkemotorer.
+[context.staging]
+  command = "npm install && npm run build && cp ./custom-headers/_stagingHeaders ./dist/_headers"
+
 # SPA-fallback: alle adresser (f.eks. /blogg/ns8175-etterklangskrav) serveres
 # av index.html, slik at React Router kan vise riktig side. Uten denne gir
 # direktebesøk og oppfrisking på undersider 404.
