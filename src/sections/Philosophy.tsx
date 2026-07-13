@@ -130,6 +130,7 @@ export default function Philosophy() {
             Rommets akustiske egenskaper — etterklangstid, frekvensrespons,
             støyisolasjon og geometri — er grunnlaget som alt annet bygger på.
             Når rommet er riktig vurdert, kan lydanlegget gjøre jobben det er ment å gjøre.
+            Og når rommet selv er problemet, prosjekterer jeg tiltakene som retter det – før det brukes en krone på nytt utstyr.
           </p>
           <a
             href="#tjenester"
