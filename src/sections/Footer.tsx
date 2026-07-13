@@ -30,7 +30,7 @@ export default function Footer() {
               THORBJØRN DANBOLT
             </a>
             <p className="text-cream/50 text-sm leading-relaxed max-w-sm mb-6">
-              Uavhengig teknisk rådgiver innen lyd, bilde og romakustikk.
+              Uavhengig teknisk rådgiver innen lyd, bilde og romakustikk – fra måling og tiltaksplan til ferdig kvalitetssikret anlegg.
               Spesialist på kirker, konferansesenter og møterom.
             </p>
             <div className="flex items-center gap-4 text-sm text-cream/40">
